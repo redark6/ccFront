@@ -1,0 +1,87 @@
+<div class="py-5">
+  <h2 class="py-3 text-center">Créer un utilisateur</h2>
+  <form [formGroup]="userForm">
+
+    <div class="row pb-3">
+
+        <div class="m-auto col-lg-6 col-md-6 col-12">
+
+          <input #_fileInput type="file" (change)="openCropperDialog($event)" accept="image/*" hidden>
+
+          <div class="card-img-form card-img-rad">
+
+            <div class="row m-0" style="position: absolute;width: inherit">
+
+              <div class=" col-8 pr-0 d-flex justify-content-start p-0" style="z-index: 200">
+                <button ly-button color="primary" [disabled]="this.userCanAddDesc" class="btn btn-lg btn-light" (click)="_fileInput.click()">
+                  <ly-icon [lyMf]="1">image</ly-icon>
+                  <span>Select File</span>
+                </button>
+
+              </div>
+
+              <div class="col-4 pl-0 d-flex justify-content-end p-0 " style="z-index: 200">
+                <button class="btn btn-lg btn-light" [disabled]="this.userCanAddDesc" (click)="removepicture()">
+                  <i class="fas fa-times"></i></button>
+              </div>
+
+            </div>
+
+            <div *ngIf="cropped"><img class=" card-img-form card-img-rad" [src]="cropped"></div>
+            <div *ngIf="!cropped"><img class="card-img-form card-img-rad" src="assets/images/nopicture.png"></div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom d'utilisateur</mat-label>
+          <input matInput formControlName="userName">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput formControlName="password">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 mt-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Confirmation mot de passe</mat-label>
+          <input matInput formControlName="confirmPassword">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <button class="btn btn-block btn-info">Créer</button>
+    </div>
+  </form>
+</div>
